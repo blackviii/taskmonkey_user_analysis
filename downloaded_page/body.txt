@@ -1,0 +1,373 @@
+<html><plasmo-csui id="taskmonkey-csui"></plasmo-csui><plasmo-csui></plasmo-csui><head><title>用户列表</title>
+          <script>
+            function showInputBox(userId,content) {
+                var newContent = prompt(content, '');
+                if (newContent !== null) {
+                    saveContent(userId, newContent);
+                }
+            }
+            
+            function showInputBox1(userId,content) {
+                var newContent = prompt(content, '');
+                if (newContent !== null) {
+                    saveContent1(userId, newContent);
+                }
+            }
+            
+            function saveContent(userId, newContent) {
+                // 发送 AJAX 请求保存备注内容
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'https://api.taskmonkey.ai/api/user/saveContent', true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        alert('备注保存成功');
+                        // 刷新页面
+                        location.reload();
+                    }
+                };
+                xhr.send(JSON.stringify({ userId: userId, content: newContent }));
+            }
+            
+            function saveContent1(userId, newContent) {
+                // 发送 AJAX 请求保存备注内容
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'https://api.taskmonkey.ai/api/user/saveContent1', true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        alert('备注保存成功');
+                        // 刷新页面
+                        location.reload();
+                    }
+                };
+                xhr.send(JSON.stringify({ userId: userId, credits: newContent }));
+            }
+            
+          </script>
+          </head><body><h1>用户列表</h1><p>用户总数: 1968</p><p>最后的产品创建时间: 2025-05-18 08:06:36</p><p>总的退款金额: 22432.50</p><form method="GET" action="https://api.taskmonkey.ai/api/user/index">
+            <input type="text" name="search_email" placeholder="搜索邮箱" value="">
+            <button type="submit">搜索</button>
+          </form><form method="GET" action="https://api.taskmonkey.ai/api/user/index">
+        <input type="hidden" name="orderBy" placeholder="搜索邮箱" value="update_time">
+        <button type="submit">最新使用时间</button>
+      </form><form method="GET" action="https://api.taskmonkey.ai/api/user/index">
+        <input type="hidden" name="orderBy" placeholder="搜索邮箱" value="id">
+        <button type="submit">最新注册时间</button>
+      </form><table border="1">
+            <thead>
+                <tr>
+                    <th>用户ID</th>
+                    <th>邮箱</th>
+                    <th>创建时间</th>
+                    <th>推广人数</th>
+                    <th>是否会员</th>
+                    <th>退款金额</th>
+                    <th>最后一次退款额</th>
+                    <th>最后一次可扣总额</th>
+                    <th>积分余额</th>
+                    <th>是否绑卡</th>
+                    <th>国家</th>
+                    <th>充值金额</th>
+                    <th>总扣款额</th>
+                    <th>版本号</th>
+                    <th>终端类型</th>
+                    <th>浏览器类型</th>
+                    <th>操作</th>
+                    <th>备注</th>
+                </tr>
+            </thead>
+            <tbody><tr>
+                <td>1975</td>
+                <td>hzkobeyu@gmail.com</td>
+                <td>2025-05-18 08:03:41</td>
+                <td>0</td>
+                <td>是</td>
+                <td>22.00</td>
+                <td>22.00</td>
+                <td>0</td>
+                <td>0</td>
+                <td>否</td>
+                <td>US</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                <td>desktop</td>
+                <td>Chrome</td>
+                
+                <td><a href="https://api.taskmonkey.ai/api/user/orders/1975">查看订单</a>
+                    <a href="https://api.taskmonkey.ai/api/user/ordersfail/1975">扫描记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/login/log/1975">登录记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/controls/log/1975">操作记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/paylog/1975">充值记录</a>
+                    <a href="javascript:void(0);" onclick="showInputBox1(&quot;1975&quot;, &quot;0&quot;)">修改积分</a>
+                </td>
+                <td>
+                    <a href="javascript:void(0);" onclick="showInputBox(&quot;1975&quot;, &quot;暂无&quot;)">暂无</a>
+                </td>
+              </tr><tr>
+                <td>1974</td>
+                <td>extraquoo@gmail.com</td>
+                <td>2025-05-17 21:57:24</td>
+                <td>0</td>
+                <td>否</td>
+                <td>5.04</td>
+                <td>5.04</td>
+                <td>0</td>
+                <td>20</td>
+                <td>否</td>
+                <td>US</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                <td>desktop</td>
+                <td>Chrome</td>
+                
+                <td><a href="https://api.taskmonkey.ai/api/user/orders/1974">查看订单</a>
+                    <a href="https://api.taskmonkey.ai/api/user/ordersfail/1974">扫描记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/login/log/1974">登录记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/controls/log/1974">操作记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/paylog/1974">充值记录</a>
+                    <a href="javascript:void(0);" onclick="showInputBox1(&quot;1974&quot;, &quot;20&quot;)">修改积分</a>
+                </td>
+                <td>
+                    <a href="javascript:void(0);" onclick="showInputBox(&quot;1974&quot;, &quot;暂无&quot;)">暂无</a>
+                </td>
+              </tr><tr>
+                <td>1973</td>
+                <td>kexinyuluo@163.com</td>
+                <td>2025-05-17 21:46:35</td>
+                <td>0</td>
+                <td>是</td>
+                <td>43.92</td>
+                <td>33.53</td>
+                <td>0</td>
+                <td>16.47</td>
+                <td>否</td>
+                <td>US</td>
+                <td>5.00</td>
+                <td>0</td>
+                <td></td>
+                <td>desktop</td>
+                <td>Chrome</td>
+                
+                <td><a href="https://api.taskmonkey.ai/api/user/orders/1973">查看订单</a>
+                    <a href="https://api.taskmonkey.ai/api/user/ordersfail/1973">扫描记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/login/log/1973">登录记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/controls/log/1973">操作记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/paylog/1973">充值记录</a>
+                    <a href="javascript:void(0);" onclick="showInputBox1(&quot;1973&quot;, &quot;16.47&quot;)">修改积分</a>
+                </td>
+                <td>
+                    <a href="javascript:void(0);" onclick="showInputBox(&quot;1973&quot;, &quot;暂无&quot;)">暂无</a>
+                </td>
+              </tr><tr>
+                <td>1972</td>
+                <td>zzj1044@gmail.com</td>
+                <td>2025-05-17 21:41:32</td>
+                <td>0</td>
+                <td>是</td>
+                <td>2.81</td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>否</td>
+                <td>US</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                <td>desktop</td>
+                <td>Chrome</td>
+                
+                <td><a href="https://api.taskmonkey.ai/api/user/orders/1972">查看订单</a>
+                    <a href="https://api.taskmonkey.ai/api/user/ordersfail/1972">扫描记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/login/log/1972">登录记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/controls/log/1972">操作记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/paylog/1972">充值记录</a>
+                    <a href="javascript:void(0);" onclick="showInputBox1(&quot;1972&quot;, &quot;0&quot;)">修改积分</a>
+                </td>
+                <td>
+                    <a href="javascript:void(0);" onclick="showInputBox(&quot;1972&quot;, &quot;暂无&quot;)">暂无</a>
+                </td>
+              </tr><tr>
+                <td>1971</td>
+                <td>cjtimt97@gmail.com</td>
+                <td>2025-05-17 12:48:47</td>
+                <td>0</td>
+                <td>否</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>否</td>
+                <td>US</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                <td>desktop</td>
+                <td>Chrome</td>
+                
+                <td><a href="https://api.taskmonkey.ai/api/user/orders/1971">查看订单</a>
+                    <a href="https://api.taskmonkey.ai/api/user/ordersfail/1971">扫描记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/login/log/1971">登录记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/controls/log/1971">操作记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/paylog/1971">充值记录</a>
+                    <a href="javascript:void(0);" onclick="showInputBox1(&quot;1971&quot;, &quot;0&quot;)">修改积分</a>
+                </td>
+                <td>
+                    <a href="javascript:void(0);" onclick="showInputBox(&quot;1971&quot;, &quot;暂无&quot;)">暂无</a>
+                </td>
+              </tr><tr>
+                <td>1970</td>
+                <td>61705325l@gmail.com</td>
+                <td>2025-05-16 22:30:50</td>
+                <td>0</td>
+                <td>否</td>
+                <td>7.00</td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>否</td>
+                <td>US</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0.3.28</td>
+                <td>desktop</td>
+                <td>Chrome</td>
+                
+                <td><a href="https://api.taskmonkey.ai/api/user/orders/1970">查看订单</a>
+                    <a href="https://api.taskmonkey.ai/api/user/ordersfail/1970">扫描记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/login/log/1970">登录记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/controls/log/1970">操作记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/paylog/1970">充值记录</a>
+                    <a href="javascript:void(0);" onclick="showInputBox1(&quot;1970&quot;, &quot;0&quot;)">修改积分</a>
+                </td>
+                <td>
+                    <a href="javascript:void(0);" onclick="showInputBox(&quot;1970&quot;, &quot;暂无&quot;)">暂无</a>
+                </td>
+              </tr><tr>
+                <td>1969</td>
+                <td>yuxinli915@outlook.com</td>
+                <td>2025-05-16 18:29:12</td>
+                <td>0</td>
+                <td>否</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>否</td>
+                <td>CA</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                <td>desktop</td>
+                <td>Chrome</td>
+                
+                <td><a href="https://api.taskmonkey.ai/api/user/orders/1969">查看订单</a>
+                    <a href="https://api.taskmonkey.ai/api/user/ordersfail/1969">扫描记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/login/log/1969">登录记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/controls/log/1969">操作记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/paylog/1969">充值记录</a>
+                    <a href="javascript:void(0);" onclick="showInputBox1(&quot;1969&quot;, &quot;0&quot;)">修改积分</a>
+                </td>
+                <td>
+                    <a href="javascript:void(0);" onclick="showInputBox(&quot;1969&quot;, &quot;暂无&quot;)">暂无</a>
+                </td>
+              </tr><tr>
+                <td>1968</td>
+                <td>bbnikki@gmail.com</td>
+                <td>2025-05-16 15:21:49</td>
+                <td>0</td>
+                <td>是</td>
+                <td>82.79</td>
+                <td>1.79</td>
+                <td>0</td>
+                <td>22.21</td>
+                <td>否</td>
+                <td>US</td>
+                <td>10.00</td>
+                <td>0</td>
+                <td>0.3.28</td>
+                <td>desktop</td>
+                <td>Chrome</td>
+                
+                <td><a href="https://api.taskmonkey.ai/api/user/orders/1968">查看订单</a>
+                    <a href="https://api.taskmonkey.ai/api/user/ordersfail/1968">扫描记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/login/log/1968">登录记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/controls/log/1968">操作记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/paylog/1968">充值记录</a>
+                    <a href="javascript:void(0);" onclick="showInputBox1(&quot;1968&quot;, &quot;22.21&quot;)">修改积分</a>
+                </td>
+                <td>
+                    <a href="javascript:void(0);" onclick="showInputBox(&quot;1968&quot;, &quot;暂无&quot;)">暂无</a>
+                </td>
+              </tr><tr>
+                <td>1967</td>
+                <td>fenixkok@hotmail.com</td>
+                <td>2025-05-16 05:35:05</td>
+                <td>0</td>
+                <td>否</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>否</td>
+                <td>US</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                <td>desktop</td>
+                <td>Chrome</td>
+                
+                <td><a href="https://api.taskmonkey.ai/api/user/orders/1967">查看订单</a>
+                    <a href="https://api.taskmonkey.ai/api/user/ordersfail/1967">扫描记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/login/log/1967">登录记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/controls/log/1967">操作记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/paylog/1967">充值记录</a>
+                    <a href="javascript:void(0);" onclick="showInputBox1(&quot;1967&quot;, &quot;0&quot;)">修改积分</a>
+                </td>
+                <td>
+                    <a href="javascript:void(0);" onclick="showInputBox(&quot;1967&quot;, &quot;暂无&quot;)">暂无</a>
+                </td>
+              </tr><tr>
+                <td>1966</td>
+                <td>testqer505@gmail.com</td>
+                <td>2025-05-15 22:26:30</td>
+                <td>0</td>
+                <td>否</td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td>0</td>
+                <td>否</td>
+                <td>US</td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+                <td>desktop</td>
+                <td>Chrome</td>
+                
+                <td><a href="https://api.taskmonkey.ai/api/user/orders/1966">查看订单</a>
+                    <a href="https://api.taskmonkey.ai/api/user/ordersfail/1966">扫描记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/login/log/1966">登录记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/controls/log/1966">操作记录</a>
+                    <a href="https://api.taskmonkey.ai/api/user/paylog/1966">充值记录</a>
+                    <a href="javascript:void(0);" onclick="showInputBox1(&quot;1966&quot;, &quot;0&quot;)">修改积分</a>
+                </td>
+                <td>
+                    <a href="javascript:void(0);" onclick="showInputBox(&quot;1966&quot;, &quot;暂无&quot;)">暂无</a>
+                </td>
+              </tr></tbody></table><nav role="navigation" aria-label="Pagination Navigation">
+        <ul class="pagination">
+            
+                            <li class="page-item disabled" aria-disabled="true">
+                    <span class="page-link">« Previous</span>
+                </li>
+            
+            
+                            <li class="page-item">
+                    <a class="page-link" href="https://api.taskmonkey.ai/api/user/index?orderBy=id&amp;page=2" rel="next">Next »</a>
+                </li>
+                    </ul>
+    </nav>
+</body><plasmo-csui id="aitdk-csui"></plasmo-csui></html>
