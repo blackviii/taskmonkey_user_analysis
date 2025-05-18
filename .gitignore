@@ -1,0 +1,19 @@
+# 虚拟环境
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 数据和日志文件
+*.db
+logs/
+downloaded_page/*.html
+.DS_Store
+
+# 测试缓存
+.pytest_cache/
+
+# 其他系统文件
+chrome_data/
+.cursor/

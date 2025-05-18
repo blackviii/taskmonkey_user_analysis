@@ -1,0 +1,134 @@
+# TaskMonkey 用户数据分析工具
+
+本工具用于采集 TaskMonkey 平台的用户数据，并将其存储到本地数据库中进行分析。
+
+## 功能特点
+
+- 自动获取 Cookie 以进行授权访问
+- 计算总页数并抓取所有用户数据
+- 提取用户信息包括基本资料和相关链接
+- 存储到 SQLite 数据库中便于查询和分析
+- 支持增量更新（已存在的用户会被更新而不是重复添加）
+
+## 项目结构
+
+```
+taskmonkey_user_analysis/
+  ├── main.py                    # 主程序
+  ├── get_cookie.py              # 获取 Cookie
+  ├── get_page_total.py          # 获取总页数
+  ├── get_page_content.py        # 获取页面内容
+  ├── get_users_array_from_page.py  # 从页面提取用户数据
+  ├── insert_users_array_to_db.py   # 将用户数据插入数据库
+  ├── db_config.py               # 数据库配置
+  ├── test_functions.py          # 测试函数
+  ├── requirements.txt           # 项目依赖
+  ├── downloaded_page/           # 保存下载的页面
+  └── logs/                      # 日志文件目录
+```
+
+## 环境要求
+
+- Python 3.8+
+- 必要的Python包：playwright, beautifulsoup4, pandas, pytest, lxml, python-dotenv
+
+## 安装和设置
+
+1. 创建虚拟环境
+
+```bash
+python -m venv .venv
+```
+
+2. 激活虚拟环境
+
+```bash
+# Windows
+.venv\Scripts\activate
+
+# macOS/Linux
+source .venv/bin/activate
+```
+
+3. 安装依赖
+
+```bash
+pip install -r requirements.txt
+```
+
+4. 安装 Playwright 浏览器
+
+```bash
+python -m playwright install
+```
+
+## 使用方法
+
+### 运行整个数据采集流程
+
+```bash
+python main.py
+```
+
+### 单独运行各模块进行测试
+
+```bash
+# 测试获取 Cookie
+python get_cookie.py
+
+# 测试获取总页数
+python get_page_total.py
+
+# 测试获取页面内容
+python get_page_content.py
+
+# 测试解析用户数据
+python get_users_array_from_page.py
+
+# 测试插入数据库
+python insert_users_array_to_db.py
+```
+
+### 运行测试
+
+```bash
+python -m pytest test_functions.py -v
+```
+
+## 数据库结构
+
+数据存储在 SQLite 数据库 `users.db` 中，包含以下表：
+
+1. `users` - 存储用户基本信息
+2. `user_links` - 存储用户相关的链接信息
+
+## 注意事项
+
+- 程序运行过程中会在 `downloaded_page` 目录下保存页面内容
+- 日志会保存在 `logs` 目录下，方便排查问题
+
+## 原始需求
+
+需求：
+    第一步：
+    我把你要分析的页面html文件下载了下来，放到了/Users/chengqianzhao/Projects/taskmonkey_user_analysis/downloaded_page/body.txt 
+    请你仔细分析这个文件，根据里面表格的内容，设计一个数据库，存放表格里的内容，不要丢失任何信息，包括里面的超链接信息。
+        1.写一个get_users_array_from_page.py, 把每个user的信息放到各自的json里，整体输出数组
+        2.insert_users_arrary_to_db.py,把数组插入到数据库里，插入前要根据user_id去数据库里查询，如果存在，则更新，不存在，则插入
+
+    第二步：
+    整体采用Headless+playwright的技术方案
+    1. 写get_cookie.py, 先访问https://api.taskmonkey.ai/api/index/enable/update?secret_key=tastAdmin77123， 获取到cookie
+    2. get_page_total.py, 访问 https://api.taskmonkey.ai/api/user/index?orderBy=id（这个页面的html内容就是上面 body.txt)  获取 "用户总数"， 计算一共的页数是 page_total = "用户总数"/10 取整 + 1；
+    2. 写get_page_content.py, 输入的是一个 url，输出的是这个页面的html内容
+    
+    第三步：
+    写一个main.py, 先调用get_cookie.py, 获取到cookie
+    使用这个cookie，调用get_page_total.py, 获得 page_total
+    从n=1到page_total，https://api.taskmonkey.ai/api/user/index?orderBy=id&page=n, 每次调用get_page_content.py, 获取到每个页面的html内容 
+    把这个html内容，调用get_users_array_from_page.py, 把每个user的信息放到各自的json里，整体输出数组
+    然后调用insert_users_arrary_to_db.py,把数组插入到数据库里，插入前要根据user_id去数据库里查询，如果存在，则更新，不存在，则插入
+
+
+
+    
